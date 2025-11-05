@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Lightbulb, Upload, LayoutDashboard } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const Navigation = () => {
   const location = useLocation();
@@ -41,6 +42,8 @@ const Navigation = () => {
                 Admin
               </Button>
             </Link>
+            
+            <ThemeToggle />
           </div>
         </div>
       </div>

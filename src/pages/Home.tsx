@@ -23,7 +23,7 @@ const Home = () => {
         />
         
         <div className="container relative mx-auto px-4 py-24 md:py-32">
-          <div className="mx-auto max-w-3xl text-center">
+          <div className="mx-auto max-w-3xl text-center animate-fade-in">
             <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
               Where Great Ideas Meet
               <span className="block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
@@ -55,8 +55,8 @@ const Home = () => {
       
       {/* Features Section */}
       <section className="container mx-auto px-4 py-20">
-        <div className="grid gap-8 md:grid-cols-3">
-          <Card className="border-none shadow-lg">
+        <div className="grid gap-8 md:grid-cols-3 animate-fade-in">
+          <Card className="border-none shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl">
             <CardContent className="pt-6">
               <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
                 <Search className="h-6 w-6 text-primary" />
@@ -68,7 +68,7 @@ const Home = () => {
             </CardContent>
           </Card>
           
-          <Card className="border-none shadow-lg">
+          <Card className="border-none shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl">
             <CardContent className="pt-6">
               <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-secondary/10">
                 <TrendingUp className="h-6 w-6 text-secondary" />
@@ -80,7 +80,7 @@ const Home = () => {
             </CardContent>
           </Card>
           
-          <Card className="border-none shadow-lg">
+          <Card className="border-none shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl">
             <CardContent className="pt-6">
               <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-accent/10">
                 <Users className="h-6 w-6 text-accent" />

@@ -105,7 +105,7 @@ const Projects = () => {
       <Navigation />
 
       <div className="container mx-auto px-4 py-8">
-        <div className="mb-8">
+        <div className="mb-8 animate-fade-in">
           <h1 className="mb-2 text-4xl font-bold">Discover Projects</h1>
           <p className="text-lg text-muted-foreground">
             Explore innovative capstone projects from talented students

@@ -38,7 +38,7 @@ const ProjectCard = ({
   };
 
   return (
-    <Card className="group flex h-full flex-col transition-all hover:shadow-lg">
+    <Card className="group flex h-full flex-col transition-all duration-300 hover:shadow-lg hover:-translate-y-1 animate-fade-in">
       <CardHeader>
         <div className="mb-2 flex items-start justify-between gap-2">
           <Badge variant="outline" className="text-xs">
