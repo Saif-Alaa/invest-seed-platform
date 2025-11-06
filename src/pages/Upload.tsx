@@ -25,7 +25,9 @@ const Upload = () => {
     supervisor: "",
   });
   
-  const [teamMembers, setTeamMembers] = useState<string[]>([""]);
+  const [teamMembers, setTeamMembers] = useState<Array<{ name: string; email: string }>>([
+    { name: "", email: "" }
+  ]);
   const [technologies, setTechnologies] = useState<string[]>([]);
   const [techInput, setTechInput] = useState("");
 
@@ -55,12 +57,12 @@ const Upload = () => {
   };
 
   const addTeamMember = () => {
-    setTeamMembers([...teamMembers, ""]);
+    setTeamMembers([...teamMembers, { name: "", email: "" }]);
   };
 
-  const updateTeamMember = (index: number, value: string) => {
+  const updateTeamMember = (index: number, field: "name" | "email", value: string) => {
     const updated = [...teamMembers];
-    updated[index] = value;
+    updated[index][field] = value;
     setTeamMembers(updated);
   };
 
@@ -189,24 +191,39 @@ const Upload = () => {
 
               {/* Team Members */}
               <div className="space-y-2">
-                <Label>Team Members</Label>
+                <Label>Team Members *</Label>
+                <p className="text-sm text-muted-foreground">
+                  Team members will receive email notifications about the project submission
+                </p>
                 {teamMembers.map((member, index) => (
-                  <div key={index} className="flex gap-2">
-                    <Input
-                      placeholder="Enter team member name"
-                      value={member}
-                      onChange={(e) => updateTeamMember(index, e.target.value)}
-                    />
-                    {teamMembers.length > 1 && (
-                      <Button
-                        type="button"
-                        variant="outline"
-                        size="icon"
-                        onClick={() => removeTeamMember(index)}
-                      >
-                        <X className="h-4 w-4" />
-                      </Button>
-                    )}
+                  <div key={index} className="space-y-2 rounded-lg border p-3">
+                    <div className="flex gap-2">
+                      <div className="flex-1 space-y-2">
+                        <Input
+                          placeholder="Full name"
+                          value={member.name}
+                          onChange={(e) => updateTeamMember(index, "name", e.target.value)}
+                          required
+                        />
+                        <Input
+                          type="email"
+                          placeholder="Email address"
+                          value={member.email}
+                          onChange={(e) => updateTeamMember(index, "email", e.target.value)}
+                          required
+                        />
+                      </div>
+                      {teamMembers.length > 1 && (
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="icon"
+                          onClick={() => removeTeamMember(index)}
+                        >
+                          <X className="h-4 w-4" />
+                        </Button>
+                      )}
+                    </div>
                   </div>
                 ))}
                 <Button type="button" variant="outline" onClick={addTeamMember} className="w-full">
