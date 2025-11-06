@@ -3,7 +3,8 @@ import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, Users, Calendar, User, TrendingUp } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { ArrowLeft, Users, Calendar, User, TrendingUp, Mail } from "lucide-react";
 
 // Mock data - same as in Projects.tsx
 const mockProjects = [
@@ -13,7 +14,11 @@ const mockProjects = [
     shortDescription: "A machine learning system that helps diagnose common illnesses and suggests treatment plans based on symptoms and medical history.",
     detailedDescription: "This project uses natural language processing and machine learning to create an intelligent healthcare assistant. The system analyzes patient symptoms, medical history, and current research to provide accurate preliminary diagnoses and treatment suggestions. It includes a user-friendly interface for both patients and healthcare providers, with features for symptom tracking, medication reminders, and health trend analysis. The AI model was trained on anonymized medical data and achieves 87% accuracy in preliminary diagnoses compared to general practitioners.",
     year: "2024",
-    team: ["Sarah Johnson", "Mike Chen", "Emily Rodriguez"],
+    team: [
+      { name: "Sarah Johnson", email: "sarah.johnson@university.edu", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah" },
+      { name: "Mike Chen", email: "mike.chen@university.edu", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Mike" },
+      { name: "Emily Rodriguez", email: "emily.rodriguez@university.edu", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Emily" }
+    ],
     supervisor: "Dr. Robert Williams",
     technologies: ["Python", "TensorFlow", "React", "Node.js", "MongoDB", "Natural Language Processing"],
     category: "Healthcare",
@@ -25,7 +30,10 @@ const mockProjects = [
     shortDescription: "An IoT-based system that optimizes energy distribution in smart cities, reducing waste and improving efficiency.",
     detailedDescription: "Using real-time data from IoT sensors, this system analyzes energy consumption patterns across urban infrastructure and automatically adjusts power distribution to minimize waste. The platform includes predictive algorithms that forecast energy demands based on historical data, weather patterns, and city events. Early testing showed a 23% reduction in energy waste and improved grid stability during peak hours.",
     year: "2024",
-    team: ["David Park", "Lisa Wang"],
+    team: [
+      { name: "David Park", email: "david.park@university.edu", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=David" },
+      { name: "Lisa Wang", email: "lisa.wang@university.edu", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Lisa" }
+    ],
     supervisor: "Prof. Amanda Green",
     technologies: ["IoT", "Python", "AWS", "MongoDB", "Machine Learning"],
     category: "Energy",
@@ -37,7 +45,12 @@ const mockProjects = [
     shortDescription: "A transparent supply chain management system using blockchain technology to track products from origin to consumer.",
     detailedDescription: "This blockchain-based solution provides end-to-end visibility in supply chains, allowing consumers and businesses to verify product authenticity, ethical sourcing, and environmental impact. Each transaction in the supply chain is recorded as an immutable block, creating a transparent and tamper-proof record. The system has been successfully piloted with three medium-sized manufacturers, reducing counterfeit products by 95%.",
     year: "2023",
-    team: ["James Liu", "Maria Garcia", "Tom Anderson", "Nina Patel"],
+    team: [
+      { name: "James Liu", email: "james.liu@university.edu", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=James" },
+      { name: "Maria Garcia", email: "maria.garcia@university.edu", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Maria" },
+      { name: "Tom Anderson", email: "tom.anderson@university.edu", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Tom" },
+      { name: "Nina Patel", email: "nina.patel@university.edu", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Nina" }
+    ],
     supervisor: "Dr. Michael Brown",
     technologies: ["Blockchain", "Solidity", "React", "Web3", "Smart Contracts"],
     category: "Technology",
@@ -49,7 +62,10 @@ const mockProjects = [
     shortDescription: "An immersive virtual reality platform for interactive learning experiences in STEM subjects.",
     detailedDescription: "This VR platform creates engaging educational content for students in STEM fields. Students can conduct virtual chemistry experiments, explore 3D molecular structures, practice physics simulations, and collaborate in virtual labs. The platform includes assessment tools for teachers and adaptive learning paths based on student performance. Initial tests with 200 high school students showed 40% improvement in concept retention compared to traditional methods.",
     year: "2024",
-    team: ["Alex Thompson", "Rachel Kim"],
+    team: [
+      { name: "Alex Thompson", email: "alex.thompson@university.edu", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Alex" },
+      { name: "Rachel Kim", email: "rachel.kim@university.edu", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Rachel" }
+    ],
     supervisor: "Prof. Jennifer Lee",
     technologies: ["Unity", "C#", "VR", "3D Modeling", "WebXR"],
     category: "Education",
@@ -61,7 +77,11 @@ const mockProjects = [
     shortDescription: "A monitoring system that helps farmers optimize crop yields while minimizing environmental impact.",
     detailedDescription: "Using sensors and data analytics, this system provides insights for sustainable farming practices. It monitors soil conditions, weather patterns, water usage, and crop health in real-time. The AI-powered recommendation engine suggests optimal planting times, irrigation schedules, and fertilizer usage to maximize yields while reducing environmental impact. Field tests with local farmers showed 18% increase in yields and 30% reduction in water usage.",
     year: "2023",
-    team: ["Carlos Martinez", "Sophie Turner", "Ben Jackson"],
+    team: [
+      { name: "Carlos Martinez", email: "carlos.martinez@university.edu", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Carlos" },
+      { name: "Sophie Turner", email: "sophie.turner@university.edu", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sophie" },
+      { name: "Ben Jackson", email: "ben.jackson@university.edu", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Ben" }
+    ],
     supervisor: "Dr. Helen Carter",
     technologies: ["IoT", "Python", "React Native", "PostgreSQL", "Data Analytics"],
     category: "Agriculture",
@@ -73,7 +93,10 @@ const mockProjects = [
     shortDescription: "An autonomous navigation system for last-mile delivery robots in urban environments.",
     detailedDescription: "This project develops autonomous navigation algorithms for safe urban delivery. The robot uses computer vision, LIDAR, and machine learning to navigate sidewalks, avoid obstacles, and interact safely with pedestrians. It includes a secure delivery mechanism and real-time tracking for customers. The system has completed over 500 test deliveries with a 99.2% success rate and zero safety incidents.",
     year: "2024",
-    team: ["Kevin Zhang", "Emma Davis"],
+    team: [
+      { name: "Kevin Zhang", email: "kevin.zhang@university.edu", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Kevin" },
+      { name: "Emma Davis", email: "emma.davis@university.edu", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Emma" }
+    ],
     supervisor: "Prof. Richard Moore",
     technologies: ["ROS", "Python", "Computer Vision", "AI", "LIDAR"],
     category: "Robotics",
@@ -187,14 +210,26 @@ const ProjectDetail = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2">
+                <div className="space-y-4">
                   {project.team.map((member) => (
-                    <li key={member} className="flex items-center gap-2">
-                      <div className="h-2 w-2 rounded-full bg-primary" />
-                      <span>{member}</span>
-                    </li>
+                    <div key={member.email} className="flex items-start gap-3 p-3 rounded-lg border bg-card hover:bg-accent/50 transition-colors">
+                      <Avatar className="h-12 w-12">
+                        <AvatarImage src={member.avatar} alt={member.name} />
+                        <AvatarFallback>{member.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+                      </Avatar>
+                      <div className="flex-1 min-w-0">
+                        <p className="font-medium">{member.name}</p>
+                        <a 
+                          href={`mailto:${member.email}`}
+                          className="text-sm text-muted-foreground hover:text-primary flex items-center gap-1 mt-1 break-all"
+                        >
+                          <Mail className="h-3 w-3 flex-shrink-0" />
+                          {member.email}
+                        </a>
+                      </div>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </CardContent>
             </Card>
 
